@@ -1,3 +1,13 @@
+//
+//  MaxSubarrayAlgorithm.swift
+//  BenchmarkTests
+//
+//  Created by Meiliang Dong on 03/11/2017.
+//  Copyright © 2017 Meiliang Dong. All rights reserved.
+//
+
+import Foundation
+
 func FIND_MAX_CROSSING_SUBARRAY(A:[Int], low: Int, mid: Int, high: Int) -> (Int, Int, Int) {
     
     var max_left = low, max_right = high
@@ -33,6 +43,11 @@ func FIND_MAX_CROSSING_SUBARRAY(A:[Int], low: Int, mid: Int, high: Int) -> (Int,
 }
 
 func FIND_MAXIMUM_SUBARRAY(A: [Int], low: Int, high: Int) -> (Int, Int, Int) {
+    // When n < 10 force algorithm is better
+    if A.count < 10 {
+        return FORCE_FIND_MAX_SUBARRAY(A: A)
+    }
+    
     if high == low {
         return (low, high, A[low])
     }
@@ -81,34 +96,3 @@ func FORCE_FIND_MAX_SUBARRAY(A:[Int]) -> (low: Int, high: Int, sum: Int) {
     
     return (low, high, max)
 }
-
-var A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
-
-var (low, high, sum) = FIND_MAXIMUM_SUBARRAY(A: A, low: 0, high: A.count - 1)
-
-low
-high
-sum
-
-A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
-(low, high, sum) = FORCE_FIND_MAX_SUBARRAY(A: A)
-
-low
-high
-sum
-
-A = [-1, -2, -3, -4, -5, -6, -7, -8, -9, -10]
-
-(low, high, sum) = FIND_MAXIMUM_SUBARRAY(A: A, low: 0, high: A.count - 1)
-
-low
-high
-sum
-
-A = [-11, -2, -3, -4, -5, -6, -7, -8, -9, -10]
-
-(low, high, sum) = FIND_MAXIMUM_SUBARRAY(A: A, low: 0, high: A.count - 1)
-
-low
-high
-sum
