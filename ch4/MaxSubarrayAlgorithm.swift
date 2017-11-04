@@ -45,7 +45,7 @@ func FIND_MAX_CROSSING_SUBARRAY(A:[Int], low: Int, mid: Int, high: Int) -> (Int,
 func FIND_MAXIMUM_SUBARRAY(A: [Int], low: Int, high: Int) -> (Int, Int, Int) {
     // When n < 10 force algorithm is better
     if A.count < 10 {
-        return FORCE_FIND_MAX_SUBARRAY(A: A)
+        return FORCE_FIND_MAX_SUBARRAY(A: A, low: low, high: high)
     }
     
     if high == low {
@@ -75,18 +75,18 @@ func FIND_MAXIMUM_SUBARRAY(A: [Int], low: Int, high: Int) -> (Int, Int, Int) {
     }
 }
 
-func FORCE_FIND_MAX_SUBARRAY(A:[Int]) -> (low: Int, high: Int, sum: Int) {
-    var (low, high, max) = (0, 0, 0)
+func FORCE_FIND_MAX_SUBARRAY(A:[Int], low: Int, high: Int) -> (Int, Int, Int) {
+    var (ret_low, ret_high, max) = (0, 0, 0)
     var subarray_sum = 0;
     
-    for i in 0..<(A.count - 1) {
+    for i in low..<high {
         subarray_sum += A[i]
         
-        for j in (i + 1)...(A.count - 1) {
+        for j in (i + 1)...high {
             subarray_sum += A[j]
             if (subarray_sum > max) {
-                low = i
-                high = j
+                ret_low = i
+                ret_high = j
                 max = subarray_sum
             }
         }
@@ -94,5 +94,5 @@ func FORCE_FIND_MAX_SUBARRAY(A:[Int]) -> (low: Int, high: Int, sum: Int) {
         subarray_sum = 0
     }
     
-    return (low, high, max)
+    return (ret_low, ret_high, max)
 }

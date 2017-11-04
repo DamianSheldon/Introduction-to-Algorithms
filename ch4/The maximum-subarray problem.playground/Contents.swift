@@ -60,18 +60,18 @@ func FIND_MAXIMUM_SUBARRAY(A: [Int], low: Int, high: Int) -> (Int, Int, Int) {
     }
 }
 
-func FORCE_FIND_MAX_SUBARRAY(A:[Int]) -> (low: Int, high: Int, sum: Int) {
-    var (low, high, max) = (0, 0, 0)
+func FORCE_FIND_MAX_SUBARRAY(A:[Int], low: Int, high: Int) -> (Int, Int, Int) {
+    var (ret_low, ret_high, max) = (0, 0, 0)
     var subarray_sum = 0;
     
-    for i in 0..<(A.count - 1) {
+    for i in low..<high {
         subarray_sum += A[i]
         
-        for j in (i + 1)...(A.count - 1) {
+        for j in (i + 1)...high {
             subarray_sum += A[j]
             if (subarray_sum > max) {
-                low = i
-                high = j
+                ret_low = i
+                ret_high = j
                 max = subarray_sum
             }
         }
@@ -79,7 +79,7 @@ func FORCE_FIND_MAX_SUBARRAY(A:[Int]) -> (low: Int, high: Int, sum: Int) {
         subarray_sum = 0
     }
     
-    return (low, high, max)
+    return (ret_low, ret_high, max)
 }
 
 var A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
@@ -91,7 +91,7 @@ high
 sum
 
 A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
-(low, high, sum) = FORCE_FIND_MAX_SUBARRAY(A: A)
+(low, high, sum) = FORCE_FIND_MAX_SUBARRAY(A: A, low: 0, high: A.count - 1)
 
 low
 high

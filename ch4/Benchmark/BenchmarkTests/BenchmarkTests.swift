@@ -26,7 +26,7 @@ class BenchmarkTests: XCTestCase {
     
     func testForcePerformance() {
         self.measure {
-            let (_, _, _) = FORCE_FIND_MAX_SUBARRAY(A: A)
+            let (_, _, _) = FORCE_FIND_MAX_SUBARRAY(A: A, low: 0, high: A.count - 1)
         }
     }
     
