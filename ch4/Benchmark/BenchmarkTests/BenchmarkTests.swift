@@ -11,8 +11,8 @@ import XCTest
 
 class BenchmarkTests: XCTestCase {
     
-//    var A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
-    var A = [13, -3, -25, 20, -3, -16, -23, 18, 20]
+    var A = [13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7]
+//    var A = [13, -3, -25, 20, -3, -16, -23, 18, 20]
     
     override func setUp() {
         super.setUp()
@@ -33,6 +33,12 @@ class BenchmarkTests: XCTestCase {
     func testRecusivePerformance() {
         self.measure {
             let (_, _, _) = FIND_MAXIMUM_SUBARRAY(A: A, low: 0, high: A.count - 1)
+        }
+    }
+    
+    func testLinearPerformance() {
+        self.measure {
+            let (_, _, _) = LINEAR_FIND_MAX_SUBARRAY(A: A, low: 0, high: A.count - 1)
         }
     }
 }

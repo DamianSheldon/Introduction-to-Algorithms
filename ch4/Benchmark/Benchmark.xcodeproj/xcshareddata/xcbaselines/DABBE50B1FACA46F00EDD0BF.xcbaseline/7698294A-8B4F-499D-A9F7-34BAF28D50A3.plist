@@ -16,6 +16,16 @@
 					<string>Local Baseline</string>
 				</dict>
 			</dict>
+			<key>testLinearPerformance()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.00020857</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
 			<key>testRecusivePerformance()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
