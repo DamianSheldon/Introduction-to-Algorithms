@@ -5,13 +5,11 @@ func COUNTING_SORT(inArray A: [Int], outArray B: inout [Int], bound k: Int) -> V
         C[A[j]] += 1
     }
     // C[i] now contains the number of elements equal to i
-    C
     
     for i in 1...k {
         C[i] += C[i - 1]
     }
     // C[i] now contains the number of elements less than or equal to i
-    C
     
     var j = A.count - 1
     
